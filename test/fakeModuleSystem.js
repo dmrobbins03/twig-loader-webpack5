@@ -1,7 +1,7 @@
-var fs = require("fs");
-var path = require("path");
+import fs from "fs";
+import path from "path";
 
-module.exports = function runLoader(loader, directory, filename, arg, callback) {
+export default function runLoader(loader, directory, filename, arg, callback) {
     var async = true;
     var loaderContext = {
         async: function () {
@@ -18,7 +18,7 @@ module.exports = function runLoader(loader, directory, filename, arg, callback) 
         },
         resolve: function (context, request, callback) {
             // fake resolve extension
-            if (request.indexOf('.twig') === -1) request = request + '.twig';
+            if (request.indexOf(".twig") === -1) request = request + ".twig";
 
             var resolved = path.resolve(context, request);
 
@@ -28,7 +28,11 @@ module.exports = function runLoader(loader, directory, filename, arg, callback) 
             if (exists) {
                 callback(null, resolved);
             } else {
-                callback(new Error("Can't resolve '" + resolved + "' in '" + context + "'"));
+                callback(
+                    new Error(
+                        "Can't resolve '" + resolved + "' in '" + context + "'"
+                    )
+                );
             }
         },
         loadModule: function (request, callback) {
@@ -41,8 +45,8 @@ module.exports = function runLoader(loader, directory, filename, arg, callback) 
             return callback(null, content);
         },
         options: {
-            context: ''
-        }
+            context: "",
+        },
     };
     var res = loader.call(loaderContext, arg);
     if (!async) callback(null, res);

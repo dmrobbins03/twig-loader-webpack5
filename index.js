@@ -1,1 +1,3 @@
-module.exports = require("./lib/loader");
+import loader from "./lib/loader.js";
+
+export default loader;

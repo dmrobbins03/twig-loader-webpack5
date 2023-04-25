@@ -2,6 +2,7 @@
   "name": "twig-loader",
   "version": "0.5.3",
   "description": "Webpack loader for compiling twig.js templates",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "mocha -R spec"
@@ -17,19 +18,20 @@
   },
   "homepage": "https://github.com/zimmo-be/twig-loader#readme",
   "peerDependencies": {
-    "twig": "~1.10.5"
+    "twig": "^1.16.0"
   },
   "dependencies": {
-    "async": "^2.1.5",
-    "hasha": "^3.0.0",
-    "loader-utils": "^1.1.0",
-    "schema-utils": "^0.4.5",
-    "twig": "^1.12.0",
+    "async": "^3.2.4",
+    "hasha": "^5.2.2",
+    "loader-utils": "^3.2.1",
+    "path-browserify": "^1.0.1",
+    "schema-utils": "^4.0.1",
+    "twig": "^1.16.0",
     "underscore": "^1.9.1"
   },
   "devDependencies": {
-    "mocha": "^5.2.0",
-    "should": "^13.2.1",
-    "minimist": ">=0.2.1"
+    "minimist": ">=0.2.1",
+    "mocha": "^10.2.0",
+    "should": "^13.2.1"
   }
 }
