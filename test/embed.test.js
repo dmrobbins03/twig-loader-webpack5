@@ -1,6 +1,7 @@
 import fs from "fs";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
+import should from "should";
 
 import runLoader from "./fakeModuleSystem.js";
 import twigLoader from "../index.js";
@@ -19,10 +20,10 @@ describe("embed", function () {
             function (err, result) {
                 if (err) throw err;
 
-                result.should.have.type("string");
+                should(result).have.type("string");
 
                 // verify the generated module imports the `embed`d templates
-                result.should.match(/require\(\"embed\.html\.twig\"\);/);
+                should(result).match(/require\(\"embed\.html\.twig\"\);/);
 
                 done();
             }
@@ -39,10 +40,10 @@ describe("embed", function () {
             function (err, result) {
                 if (err) throw err;
 
-                result.should.have.type("string");
+                should(result).have.type("string");
 
                 // verify the generated module imports the `include`d templates
-                result.should.match(/require\(\"include\.html\.twig\"\);/);
+                should(result).match(/require\(\"include\.html\.twig\"\);/);
 
                 done();
             }
